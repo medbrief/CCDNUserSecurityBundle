@@ -14,6 +14,8 @@
 namespace CCDNUser\SecurityBundle\Component\Authentication\Tracker;
 
 use CCDNUser\SecurityBundle\Model\FrontModel\SessionModel;
+use Doctrine\Common\Collections\ArrayCollection;
+use Exception;
 
 /**
  *
@@ -29,16 +31,15 @@ use CCDNUser\SecurityBundle\Model\FrontModel\SessionModel;
 class LoginFailureTracker
 {
     /**
-     *
      * @access protected
-     * @var \CCDNUser\SecurityBundle\Model\FrontModel\SessionModel $sessionModel
+     * @var SessionModel $sessionModel
      */
     protected $sessionModel;
 
     /**
-     *
      * @access public
-     * @param \CCDNUser\SecurityBundle\Model\FrontModel\SessionModel $sessionModel
+     *
+     * @param SessionModel $sessionModel
      */
     public function __construct(SessionModel $sessionModel)
     {
@@ -46,11 +47,13 @@ class LoginFailureTracker
     }
 
     /**
-     *
      * @access public
-     * @param  string $ipAddress
-     * @param  int    $blockingPeriod
-     * @return array
+     *
+     * @param string $ipAddress
+     * @param int    $blockingPeriod
+     *
+     * @throws Exception
+     * @return ArrayCollection
      */
     public function getAttempts($ipAddress, $blockingPeriod)
     {

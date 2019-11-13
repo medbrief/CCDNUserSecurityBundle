@@ -13,6 +13,8 @@
 
 namespace CCDNUser\SecurityBundle\Model\Component\Manager;
 
+use CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Doctrine\ORM\QueryBuilder;
 use CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface;
@@ -34,30 +36,29 @@ interface ManagerInterface
     /**
      *
      * @access public
-     * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface       $dispatcher
-     * @param \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface $gateway
+     * @param EventDispatcherInterface $dispatcher
+     * @param GatewayInterface         $gateway
      */
     public function __construct(EventDispatcherInterface $dispatcher, GatewayInterface $gateway);
 
     /**
      *
      * @access public
-     * @param  \CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface                $model
-     * @return \CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface
+     * @param ModelInterface $model
+     * @return RepositoryInterface
      */
     public function setModel(ModelInterface $model);
 
     /**
      *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Gateway\GatewayInterface
+     * @return GatewayInterface
      */
     public function getGateway();
 
     /**
-     *
      * @access public
-     * @return \Doctrine\ORM\QueryBuilder
+     * @return QueryBuilder
      */
     public function getQueryBuilder();
 
@@ -65,63 +66,67 @@ interface ManagerInterface
      *
      * @access public
      * @param  string                                       $column  = null
-     * @param  Array                                        $aliases = null
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @param  array                                        $aliases = null
+     * @return ArrayCollection
      */
     public function createCountQuery($column = null, Array $aliases = null);
 
     /**
      *
      * @access public
-     * @param  Array                                        $aliases = null
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @param  array                                        $aliases = null
+     * @return ArrayCollection
      */
     public function createSelectQuery(Array $aliases = null);
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder                   $qb
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @param  QueryBuilder $qb
+     *
+     * @return ArrayCollection
      */
     public function one(QueryBuilder $qb);
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder $qb
-     * @return \Doctrine\ORM\QueryBuilder
+     *
+     * @param QueryBuilder $qb
+     *
+     * @return QueryBuilder
      */
     public function all(QueryBuilder $qb);
 
     /**
-     *
      * @access public
+     *
      * @param  Object                                                            $entity
-     * @return \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface
+     *
+     * @return ManagerInterface
      */
     public function persist($entity);
 
     /**
-     *
      * @access public
+     *
      * @param  Object                                                            $entity
-     * @return \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface
+     *
+     * @return ManagerInterface
      */
     public function remove($entity);
 
     /**
-     *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface
+     * @return ManagerInterface
      */
     public function flush();
 
     /**
-     *
      * @access public
+     *
      * @param  Object                                                            $entity
-     * @return \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface
+     *
+     * @return ManagerInterface
      */
     public function refresh($entity);
 }

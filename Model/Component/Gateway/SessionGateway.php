@@ -13,10 +13,15 @@
 
 namespace CCDNUser\SecurityBundle\Model\Component\Gateway;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\ORM\QueryBuilder;
 use CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface;
 use CCDNUser\SecurityBundle\Model\Component\Gateway\BaseGateway;
 use CCDNUser\SecurityBundle\Entity\Session;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  *
@@ -39,11 +44,13 @@ class SessionGateway extends BaseGateway implements GatewayInterface
     private $queryAlias = 's';
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder                          $qb
-     * @param  Array                                               $parameters
-     * @return \Symfony\Component\Security\Core\User\UserInterface
+     *
+     * @param QueryBuilder $qb
+     * @param array        $parameters
+     *
+     * @throws NonUniqueResultException
+     * @return ArrayCollection
      */
     public function findSession(QueryBuilder $qb = null, $parameters = null)
     {
@@ -55,11 +62,12 @@ class SessionGateway extends BaseGateway implements GatewayInterface
     }
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder                   $qb
-     * @param  Array                                        $parameters
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @param QueryBuilder $qb
+     * @param array        $parameters
+     *
+     * @return ArrayCollection
      */
     public function findSessions(QueryBuilder $qb = null, $parameters = null)
     {
@@ -71,10 +79,12 @@ class SessionGateway extends BaseGateway implements GatewayInterface
     }
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder $qb
-     * @param  Array                      $parameters
+     *
+     * @param QueryBuilder $qb
+     * @param array        $parameters
+     *
+     * @throws NonUniqueResultException
      * @return int
      */
     public function countSessions(QueryBuilder $qb = null, $parameters = null)
@@ -97,11 +107,12 @@ class SessionGateway extends BaseGateway implements GatewayInterface
     }
 
     /**
-     *
      * @access public
+     *
      * @param  string                     $column  = null
-     * @param  Array                      $aliases = null
-     * @return \Doctrine\ORM\QueryBuilder
+     * @param  array                      $aliases = null
+     *
+     * @return QueryBuilder
      */
     public function createCountQuery($column = null, Array $aliases = null)
     {
@@ -121,10 +132,11 @@ class SessionGateway extends BaseGateway implements GatewayInterface
     }
 
     /**
-     *
      * @access public
-     * @param  Array                      $aliases = null
-     * @return \Doctrine\ORM\QueryBuilder
+     *
+     * @param  array                      $aliases = null
+     *
+     * @return QueryBuilder
      */
     public function createSelectQuery(Array $aliases = null)
     {
@@ -140,10 +152,13 @@ class SessionGateway extends BaseGateway implements GatewayInterface
     }
 
     /**
-     *
      * @access public
-     * @param  \CCDNUser\SecurityBundle\Entity\Session                           $session
-     * @return \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface
+     *
+     * @param Session $session
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
+     * @return $this
      */
     public function persistSession(Session $session)
     {
@@ -153,10 +168,13 @@ class SessionGateway extends BaseGateway implements GatewayInterface
     }
 
     /**
-     *
      * @access public
-     * @param  \CCDNUser\SecurityBundle\Entity\Session                           $session
-     * @return \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface
+     *
+     * @param Session $session
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
+     * @return $this
      */
     public function updateSession(Session $session)
     {
@@ -166,10 +184,13 @@ class SessionGateway extends BaseGateway implements GatewayInterface
     }
 
     /**
-     *
      * @access public
-     * @param  \CCDNUser\SecurityBundle\Entity\Session                           $session
-     * @return \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface
+     *
+     * @param Session $session
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
+     * @return $this
      */
     public function deleteSession(Session $session)
     {

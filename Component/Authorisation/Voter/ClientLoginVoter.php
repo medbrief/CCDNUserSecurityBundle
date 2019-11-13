@@ -31,16 +31,15 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 class ClientLoginVoter implements VoterInterface
 {
     /**
-     *
      * @access protected
-     * @var \CCDNUser\SecurityBundle\Component\Authorisation\SecurityManagerInterface $securityManager
+     * @var SecurityManagerInterface $securityManager
      */
     protected $securityManager;
 
     /**
-     *
      * @access public
-     * @param \CCDNUser\SecurityBundle\Component\Authorisation\SecurityManagerInterface $securityManager
+     *
+     * @param SecurityManagerInterface $securityManager
      */
     public function __construct(SecurityManagerInterface $securityManager)
     {
@@ -74,9 +73,9 @@ class ClientLoginVoter implements VoterInterface
     /**
      *
      * @access public
-     * @param  \Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token
-     * @param  object                                                               $object
-     * @param  array                                                                $attributes
+     * @param TokenInterface $token
+     * @param  object        $object
+     * @param  array         $attributes
      * @return int
      */
     public function vote(TokenInterface $token, $object, array $attributes)

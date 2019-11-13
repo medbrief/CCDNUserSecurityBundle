@@ -30,9 +30,8 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 class BlockingLoginListener
 {
     /**
-     *
      * @access protected
-     * @var \CCDNUser\SecurityBundle\Component\Authorisation\SecurityManagerInterface $securityManager
+     * @var SecurityManagerInterface $securityManager
      */
     protected $securityManager;
 
@@ -42,10 +41,10 @@ class BlockingLoginListener
     protected $exceptionFactory;
 
     /**
-     *
      * @access public
-     * @param \CCDNUser\SecurityBundle\Component\Authorisation\SecurityManagerInterface         $securityManager
-     * @param \CCDNUser\SecurityBundle\Component\Listener\AccessDeniedExceptionFactoryInterface $exceptionFactory
+     *
+     * @param SecurityManagerInterface              $securityManager
+     * @param AccessDeniedExceptionFactoryInterface $exceptionFactory
      */
     public function __construct(SecurityManagerInterface $securityManager, AccessDeniedExceptionFactoryInterface $exceptionFactory)
     {
@@ -54,12 +53,14 @@ class BlockingLoginListener
     }
 
     /**
-     *
      * If you have failed to login too many times,
      * a log of this will be present in the databse.
      *
      * @access public
-     * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+     *
+     * @param GetResponseEvent $event
+     *
+     * @throws \Exception
      */
     public function onKernelRequest(GetResponseEvent $event)
     {

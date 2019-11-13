@@ -13,16 +13,13 @@
 
 namespace CCDNUser\SecurityBundle\Entity;
 
-/**
- *
- * @category CCDNUser
- * @package  SecurityBundle
- *
+use Datetime;/**
  * @author   Reece Fowell <reece@codeconsortium.com>
  * @license  http://opensource.org/licenses/MIT MIT
+ * @category CCDNUser
+ * @package  SecurityBundle
  * @version  Release: 2.0
  * @link     https://github.com/codeconsortium/CCDNUserSecurityBundle
- *
  */
 class Session
 {
@@ -40,7 +37,7 @@ class Session
 
     /**
      *
-     * @var \Datetime $loginAttemptDate
+     * @var Datetime $loginAttemptDate
      */
     protected $loginAttemptDate;
 
@@ -64,7 +61,8 @@ class Session
      * Set ipAddress
      *
      * @param  string                                  $ipAddress
-     * @return \CCDNUser\SecurityBundle\Entity\Session
+     *
+     * @return Session
      */
     public function setIpAddress($ipAddress)
     {
@@ -86,8 +84,9 @@ class Session
     /**
      * Set loginAttemptDate
      *
-     * @param  integer                                 $loginAttemptDate
-     * @return \CCDNUser\SecurityBundle\Entity\Session
+     * @param  Datetime                                 $loginAttemptDate
+     *
+     * @return Session
      */
     public function setLoginAttemptDate($loginAttemptDate)
     {
@@ -99,7 +98,7 @@ class Session
     /**
      * Get loginAttemptDate
      *
-     * @return integer
+     * @return Datetime
      */
     public function getLoginAttemptDate()
     {
@@ -109,8 +108,9 @@ class Session
     /**
      * Set loginUsername
      *
-     * @param  string                                  $loginUsername
-     * @return \CCDNUser\SecurityBundle\Entity\Session
+     * @param $loginAttemptUsername
+     *
+     * @return Session
      */
     public function setLoginAttemptUsername($loginAttemptUsername)
     {

@@ -13,18 +13,15 @@
 
 namespace CCDNUser\SecurityBundle\Model\Component\Repository;
 
-/**
- *
+use Doctrine\Common\Collections\ArrayCollection;/**
  * SessionRepository
- *
- * @category CCDNUser
- * @package  SecurityBundle
  *
  * @author   Reece Fowell <reece@codeconsortium.com>
  * @license  http://opensource.org/licenses/MIT MIT
+ * @category CCDNUser
+ * @package  SecurityBundle
  * @version  Release: 2.0
  * @link     https://github.com/codeconsortium/CCDNUserSecurityBundle
- *
  */
 class SessionRepository extends BaseRepository implements RepositoryInterface
 {
@@ -33,7 +30,7 @@ class SessionRepository extends BaseRepository implements RepositoryInterface
      * @access public
      * @param  string                                       $ipAddress
      * @param  string                                       $timeLimit
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return ArrayCollection
      */
     public function findAllByIpAddressAndLoginAttemptDate($ipAddress, $timeLimit)
     {

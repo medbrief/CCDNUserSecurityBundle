@@ -13,13 +13,10 @@
 
 namespace CCDNUser\SecurityBundle\Component\Authentication\Handler;
 
-use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\HttpFoundation\Request;
 
 use CCDNUser\SecurityBundle\Component\Authentication\Tracker\LoginFailureTracker;
 use Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler;
@@ -40,14 +37,14 @@ class LoginFailureHandler extends DefaultAuthenticationFailureHandler
     /**
      *
      * @access protected
-     * @var \CCDNUser\SecurityBundle\Component\Authentication\Tracker\LoginFailureTracker $loginFailureTracker
+     * @var LoginFailureTracker $loginFailureTracker
      */
     protected $loginFailureTracker;
 
     /**
      *
      * @access public
-     * @param \CCDNUser\SecurityBundle\Component\Authentication\Tracker\LoginFailureTracker $loginFailureTracker
+     * @param LoginFailureTracker $loginFailureTracker
      */
     public function setLoginFailureTracker(LoginFailureTracker $loginFailureTracker)
     {
@@ -57,9 +54,9 @@ class LoginFailureHandler extends DefaultAuthenticationFailureHandler
     /**
      *
      * @access public
-     * @param  \Symfony\Component\HttpFoundation\Request                                                     $request
-     * @param  \Symfony\Component\Security\Core\Exception\AuthenticationException                            $exception
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param  Request                                                     $request
+     * @param  AuthenticationException                            $exception
+     * @return RedirectResponse|Response
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {

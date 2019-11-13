@@ -13,6 +13,7 @@
 
 namespace CCDNUser\SecurityBundle\Model\Component\Repository;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
 use CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface;
 use CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface;
@@ -31,31 +32,29 @@ use CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface;
 interface RepositoryInterface
 {
     /**
-     *
      * @access public
-     * @param \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface $gateway
+     *
+     * @param GatewayInterface $gateway
      */
     public function __construct(GatewayInterface $gateway);
 
     /**
      *
      * @access public
-     * @param  \CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface                $model
-     * @return \CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface
+     * @param ModelInterface $model
+     * @return RepositoryInterface
      */
     public function setModel(ModelInterface $model);
 
     /**
-     *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface
+     * @return GatewayInterface
      */
     public function getGateway();
 
     /**
-     *
      * @access public
-     * @return \Doctrine\ORM\QueryBuilder
+     * @return QueryBuilder
      */
     public function getQueryBuilder();
 
@@ -63,32 +62,34 @@ interface RepositoryInterface
      *
      * @access public
      * @param  string                                       $column  = null
-     * @param  Array                                        $aliases = null
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @param  array                                        $aliases = null
+     * @return ArrayCollection
      */
     public function createCountQuery($column = null, Array $aliases = null);
 
     /**
      *
      * @access public
-     * @param  Array                                        $aliases = null
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @param  array                                        $aliases = null
+     * @return ArrayCollection
      */
     public function createSelectQuery(Array $aliases = null);
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder                   $qb
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @param  QueryBuilder $qb
+     *
+     * @return ArrayCollection
      */
     public function one(QueryBuilder $qb);
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder $qb
-     * @return \Doctrine\ORM\QueryBuilder
+     *
+     * @param QueryBuilder $qb
+     *
+     * @return QueryBuilder
      */
     public function all(QueryBuilder $qb);
 }

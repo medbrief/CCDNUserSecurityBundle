@@ -13,7 +13,7 @@
 
 namespace CCDNUser\SecurityBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 /**
  *
@@ -30,8 +30,10 @@ use Symfony\Component\DependencyInjection\ContainerAware;
  * @link     https://github.com/codeconsortium/CCDNUserSecurityBundle
  *
  */
-class TestLoginController extends ContainerAware
+class TestLoginController
 {
+    use ContainerAwareTrait;
+
     public function circumventAction()
     {
         $csrfToken = $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate');

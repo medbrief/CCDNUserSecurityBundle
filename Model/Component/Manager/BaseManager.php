@@ -13,6 +13,8 @@
 
 namespace CCDNUser\SecurityBundle\Model\Component\Manager;
 
+use CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Doctrine\ORM\QueryBuilder;
 use CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface;
@@ -32,31 +34,28 @@ use CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface;
 abstract class BaseManager
 {
     /**
-     *
      * @access protected
-     * @var \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface $gateway
+     * @var GatewayInterface $gateway
      */
     protected $gateway;
 
     /**
-     *
      * @access protected
-     * @var \CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface $model
+     * @var ModelInterface $model
      */
     protected $model;
 
     /**
-     *
      * @access protected
-     * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface  $dispatcher
+     * @var EventDispatcherInterface $dispatcher
      */
     protected $dispatcher;
 
     /**
-     *
      * @access public
-     * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface       $dispatcher
-     * @param \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface $gateway
+     *
+     * @param EventDispatcherInterface $dispatcher
+     * @param GatewayInterface         $gateway
      */
     public function __construct(EventDispatcherInterface $dispatcher, GatewayInterface $gateway)
     {
@@ -65,10 +64,11 @@ abstract class BaseManager
     }
 
     /**
-     *
      * @access public
-     * @param  \CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface                $model
-     * @return \CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface
+     *
+     * @param ModelInterface $model
+     *
+     * @return $this
      */
     public function setModel(ModelInterface $model)
     {
@@ -78,9 +78,8 @@ abstract class BaseManager
     }
 
     /**
-     *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface
+     * @return GatewayInterface
      */
     public function getGateway()
     {
@@ -88,9 +87,8 @@ abstract class BaseManager
     }
 
     /**
-     *
      * @access public
-     * @return \Doctrine\ORM\QueryBuilder
+     * @return QueryBuilder
      */
     public function getQueryBuilder()
     {
@@ -101,8 +99,8 @@ abstract class BaseManager
      *
      * @access public
      * @param  string                                       $column  = null
-     * @param  Array                                        $aliases = null
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @param  array                                        $aliases = null
+     * @return ArrayCollection
      */
     public function createCountQuery($column = null, Array $aliases = null)
     {
@@ -112,8 +110,8 @@ abstract class BaseManager
     /**
      *
      * @access public
-     * @param  Array                                        $aliases = null
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @param  array                                        $aliases = null
+     * @return ArrayCollection
      */
     public function createSelectQuery(Array $aliases = null)
     {
@@ -121,10 +119,11 @@ abstract class BaseManager
     }
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder                   $qb
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @param  QueryBuilder $qb
+     *
+     * @return ArrayCollection
      */
     public function one(QueryBuilder $qb)
     {
@@ -132,10 +131,11 @@ abstract class BaseManager
     }
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder $qb
-     * @return \Doctrine\ORM\QueryBuilder
+     *
+     * @param QueryBuilder $qb
+     *
+     * @return ArrayCollection
      */
     public function all(QueryBuilder $qb)
     {
@@ -143,10 +143,11 @@ abstract class BaseManager
     }
 
     /**
-     *
      * @access public
+     *
      * @param  Object                                                            $entity
-     * @return \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface
+     *
+     * @return $this
      */
     public function persist($entity)
     {
@@ -156,10 +157,11 @@ abstract class BaseManager
     }
 
     /**
-     *
      * @access public
+     *
      * @param  Object                                                            $entity
-     * @return \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface
+     *
+     * @return $this
      */
     public function remove($entity)
     {
@@ -169,9 +171,8 @@ abstract class BaseManager
     }
 
     /**
-     *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface
+     * @return $this
      */
     public function flush()
     {
@@ -181,10 +182,11 @@ abstract class BaseManager
     }
 
     /**
-     *
      * @access public
+     *
      * @param  Object                                                            $entity
-     * @return \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface
+     *
+     * @return $this
      */
     public function refresh($entity)
     {

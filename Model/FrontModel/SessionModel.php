@@ -15,6 +15,7 @@ namespace CCDNUser\SecurityBundle\Model\FrontModel;
 
 use CCDNUser\SecurityBundle\Model\FrontModel\BaseModel;
 use CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  *
@@ -34,7 +35,7 @@ class SessionModel extends BaseModel implements ModelInterface
      * @access public
      * @param  string                                       $ipAddress
      * @param  string                                       $timeLimit
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return ArrayCollection
      */
     public function findAllByIpAddressAndLoginAttemptDate($ipAddress, $timeLimit)
     {
@@ -46,7 +47,7 @@ class SessionModel extends BaseModel implements ModelInterface
      * @access public
      * @param  string                                                 $ipAddress
      * @param  string                                                 $username
-     * @return \CCDNUser\SecurityBundle\Model\FrontModel\SessionModel
+     * @return SessionModel
      */
     public function newRecord($ipAddress, $username)
     {

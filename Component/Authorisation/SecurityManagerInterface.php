@@ -26,11 +26,11 @@ interface SecurityManagerInterface
      * Constructor
      *
      * @access public
-     * @param \Symfony\Component\HttpFoundation\RequestStack                                $requestStack
-     * @param \CCDNUser\SecurityBundle\Component\Authentication\Tracker\LoginFailureTracker $loginFailureTracker
-     * @param array                                                                         $routeLogin
-     * @param array                                                                         $forceAccountRecovery
-     * @param array                                                                         $blockPages
+     * @param RequestStack        $requestStack
+     * @param LoginFailureTracker $loginFailureTracker
+     * @param array               $routeLogin
+     * @param array               $forceAccountRecovery
+     * @param array               $blockPages
      */
     public function __construct(RequestStack $requestStack, LoginFailureTracker $loginFailureTracker, $routeLogin, $forceAccountRecovery, $blockPages);
 

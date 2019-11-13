@@ -11,9 +11,8 @@ use Symfony\Component\Routing\RouterInterface;
 class DeferLoginListener
 {
     /**
-     *
      * @access protected
-     * @var \Symfony\Component\Routing\RouterInterface $router
+     * @var RouterInterface $router
      */
     protected $router;
 
@@ -25,19 +24,17 @@ class DeferLoginListener
     protected $forceAccountRecovery;
 
     /**
-     *
      * @access protected
-     * @var \CCDNUser\SecurityBundle\Component\Authorisation\SecurityManagerInterface $securityManager
+     * @var SecurityManagerInterface $securityManager
      */
     protected $securityManager;
 
     /**
-     *
      * @access public
-     * @param \Symfony\Component\Routing\RouterInterface                                $router
-     * @param \CCDNUser\SecurityBundle\Component\Authorisation\SecurityManagerInterface $securityManager
-     * @param array                                                                     $forceAccountRecovery
      *
+     * @param RouterInterface          $router
+     * @param SecurityManagerInterface $securityManager
+     * @param array                    $forceAccountRecovery
      */
     public function __construct(RouterInterface $router, SecurityManagerInterface $securityManager, array $forceAccountRecovery)
     {

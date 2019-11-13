@@ -32,25 +32,23 @@ use CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface;
 interface ModelInterface
 {
     /**
-     *
      * @access public
-     * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface             $dispatcher
-     * @param \CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface $repository
-     * @param \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface       $manager
+     *
+     * @param EventDispatcherInterface $dispatcher
+     * @param RepositoryInterface      $repository
+     * @param ManagerInterface         $manager
      */
     public function __construct(EventDispatcherInterface $dispatcher, RepositoryInterface $repository, ManagerInterface $manager);
 
     /**
-     *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface
+     * @return RepositoryInterface
      */
     public function getRepository();
 
     /**
-     *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface
+     * @return ManagerInterface
      */
     public function getManager();
 }

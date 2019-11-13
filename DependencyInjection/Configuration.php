@@ -36,7 +36,7 @@ class Configuration implements ConfigurationInterface
     /**
      *
      * @access public
-     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder
+     * @return TreeBuilder
      */
     public function getConfigTreeBuilder()
     {
@@ -59,10 +59,11 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     *
      * @access private
-     * @param  \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\Configuration
+     *
+     * @param ArrayNodeDefinition $node
+     *
+     * @return Configuration
      */
     private function addEntitySection(ArrayNodeDefinition $node)
     {
@@ -100,10 +101,11 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     *
      * @access private
-     * @param  \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\Configuration
+     *
+     * @param ArrayNodeDefinition $node
+     *
+     * @return Configuration
      */
     private function addGatewaySection(ArrayNodeDefinition $node)
     {
@@ -130,10 +132,11 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     *
      * @access private
-     * @param  \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\Configuration
+     *
+     * @param ArrayNodeDefinition $node
+     *
+     * @return Configuration
      */
     private function addRepositorySection(ArrayNodeDefinition $node)
     {
@@ -160,10 +163,11 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     *
      * @access private
-     * @param  \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\Configuration
+     *
+     * @param ArrayNodeDefinition $node
+     *
+     * @return Configuration
      */
     private function addManagerSection(ArrayNodeDefinition $node)
     {
@@ -190,10 +194,11 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     *
      * @access private
-     * @param  \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\Configuration
+     *
+     * @param ArrayNodeDefinition $node
+     *
+     * @return Configuration
      */
     private function addModelSection(ArrayNodeDefinition $node)
     {
@@ -220,10 +225,11 @@ class Configuration implements ConfigurationInterface
     }
 
      /**
-      *
       * @access private
-      * @param  \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
-      * @return \CCDNUser\SecurityBundle\DependencyInjection\Configuration
+      *
+      * @param  ArrayNodeDefinition $node
+      *
+      * @return Configuration
       */
      private function addRouteRefererSection(ArrayNodeDefinition $node)
      {
@@ -241,10 +247,11 @@ class Configuration implements ConfigurationInterface
      }
 
     /**
-     *
      * @access private
-     * @param  \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\Configuration
+     *
+     * @param  ArrayNodeDefinition $node
+     *
+     * @return Configuration
      */
     private function addComponentSection(ArrayNodeDefinition $node)
     {
@@ -377,10 +384,11 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     *
      * @access private
-     * @param  \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\Configuration
+     *
+     * @param  ArrayNodeDefinition $node
+     *
+     * @return Configuration
      */
     private function addLoginShieldSection(ArrayNodeDefinition $node)
     {

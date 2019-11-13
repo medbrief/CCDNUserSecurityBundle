@@ -13,6 +13,7 @@
 
 namespace CCDNUser\SecurityBundle\DependencyInjection;
 
+use Exception;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -46,10 +47,12 @@ class CCDNUserSecurityExtension extends Extension
     }
 
     /**
-     *
      * @access public
-     * @param array                                                   $config
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     *
+     * @param array            $configs
+     * @param ContainerBuilder $container
+     *
+     * @throws Exception
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -78,11 +81,12 @@ class CCDNUserSecurityExtension extends Extension
     }
 
     /**
-     *
      * @access private
-     * @param  array                                                                  $config
-     * @param  \Symfony\Component\DependencyInjection\ContainerBuilder                $container
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\CCDNUserSecurityExtension
+     *
+     * @param  array           $config
+     * @param ContainerBuilder $container
+     *
+     * @return CCDNUserSecurityExtension
      */
     private function getEntitySection(ContainerBuilder $container, $config)
     {
@@ -93,11 +97,12 @@ class CCDNUserSecurityExtension extends Extension
     }
 
     /**
-     *
      * @access private
-     * @param  array                                                                  $config
-     * @param  \Symfony\Component\DependencyInjection\ContainerBuilder                $container
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\CCDNUserSecurityExtension
+     *
+     * @param  array           $config
+     * @param ContainerBuilder $container
+     *
+     * @return CCDNUserSecurityExtension
      */
     private function getGatewaySection(ContainerBuilder $container, $config)
     {
@@ -107,11 +112,12 @@ class CCDNUserSecurityExtension extends Extension
     }
 
     /**
-     *
      * @access private
+     *
      * @param  array                                                                  $config
-     * @param  \Symfony\Component\DependencyInjection\ContainerBuilder                $container
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\CCDNUserSecurityExtension
+     * @param ContainerBuilder                                                        $container
+     *
+     * @return CCDNUserSecurityExtension
      */
     private function getRepositorySection(ContainerBuilder $container, $config)
     {
@@ -121,11 +127,12 @@ class CCDNUserSecurityExtension extends Extension
     }
 
     /**
-     *
      * @access private
-     * @param  array                                                                  $config
-     * @param  \Symfony\Component\DependencyInjection\ContainerBuilder                $container
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\CCDNUserSecurityExtension
+     *
+     * @param  array           $config
+     * @param ContainerBuilder $container
+     *
+     * @return CCDNUserSecurityExtension
      */
     private function getManagerSection(ContainerBuilder $container, $config)
     {
@@ -135,11 +142,12 @@ class CCDNUserSecurityExtension extends Extension
     }
 
     /**
-     *
      * @access private
-     * @param  array                                                                  $config
-     * @param  \Symfony\Component\DependencyInjection\ContainerBuilder                $container
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\CCDNUserSecurityExtension
+     *
+     * @param  array           $config
+     * @param ContainerBuilder $container
+     *
+     * @return CCDNUserSecurityExtension
      */
     private function getModelSection(ContainerBuilder $container, $config)
     {
@@ -149,11 +157,12 @@ class CCDNUserSecurityExtension extends Extension
     }
 
     /**
-     *
      * @access private
-     * @param  array                                                                  $config
-     * @param  \Symfony\Component\DependencyInjection\ContainerBuilder                $container
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\CCDNUserSecurityExtension
+     *
+     * @param  array           $config
+     * @param ContainerBuilder $container
+     *
+     * @return CCDNUserSecurityExtension
      */
     private function getComponentSection(ContainerBuilder $container, $config)
     {
@@ -171,11 +180,12 @@ class CCDNUserSecurityExtension extends Extension
     }
 
     /**
-     *
      * @access private
-     * @param  array                                                                  $config
-     * @param  \Symfony\Component\DependencyInjection\ContainerBuilder                $container
-     * @return \CCDNUser\SecurityBundle\DependencyInjection\CCDNUserSecurityExtension
+     *
+     * @param  array            $config
+     * @param  ContainerBuilder $container
+     *
+     * @return CCDNUserSecurityExtension
      */
     private function getLoginShieldSection(ContainerBuilder $container, $config)
     {

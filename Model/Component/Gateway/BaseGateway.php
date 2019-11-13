@@ -13,7 +13,13 @@
 
 namespace CCDNUser\SecurityBundle\Model\Component\Gateway;
 
+use CCDNUser\SecurityBundle\Gateway\BaseGatewayInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\ORM\QueryBuilder;
 
 /**
@@ -33,7 +39,7 @@ abstract class BaseGateway
     /**
      *
      * @access protected
-     * @var \Doctrine\ORM\EntityManager $em
+     * @var EntityManager $em
      */
     protected $em;
 
@@ -45,10 +51,12 @@ abstract class BaseGateway
     protected $entityClass;
 
     /**
-     *
      * @access public
-     * @param \Doctrine\Common\Persistence\ObjectManager $em
-     * @param string                                     $entityClass
+     *
+     * @param ObjectManager $em
+     * @param string        $entityClass
+     *
+     * @throws \Exception
      */
     public function __construct(ObjectManager $em, $entityClass)
     {
@@ -71,9 +79,8 @@ abstract class BaseGateway
     }
 
     /**
-     *
      * @access public
-     * @return \Doctrine\ORM\QueryBuilder
+     * @return QueryBuilder
      */
     public function getQueryBuilder()
     {
@@ -81,11 +88,13 @@ abstract class BaseGateway
     }
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder                   $qb
-     * @param  Array                                        $parameters
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @param QueryBuilder $qb
+     * @param array        $parameters
+     *
+     * @throws NonUniqueResultException
+     * @return ArrayCollection
      */
     public function one(QueryBuilder $qb, $parameters = array())
     {
@@ -101,11 +110,12 @@ abstract class BaseGateway
     }
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder                   $qb
-     * @param  Array                                        $parameters
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @param QueryBuilder $qb
+     * @param array       $parameters
+     *
+     * @return ArrayCollection
      */
     public function all(QueryBuilder $qb, $parameters = array())
     {
@@ -121,10 +131,12 @@ abstract class BaseGateway
     }
 
     /**
-     *
      * @access public
-     * @param  Object                                                $entity
-     * @return \CCDNUser\SecurityBundle\Gateway\BaseGatewayInterface
+     *
+     * @param Object $entity
+     *
+     * @throws ORMException
+     * @return $this
      */
     public function persist($entity)
     {
@@ -134,10 +146,12 @@ abstract class BaseGateway
     }
 
     /**
-     *
      * @access public
-     * @param  Object                                                $entity
-     * @return \CCDNUser\SecurityBundle\Gateway\BaseGatewayInterface
+     *
+     * @param Object $entity
+     *
+     * @throws ORMException
+     * @return $this
      */
     public function remove($entity)
     {
@@ -147,9 +161,10 @@ abstract class BaseGateway
     }
 
     /**
-     *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Gateway\BaseGatewayInterface
+     * @throws ORMException
+     * @throws OptimisticLockException
+     * @return $this
      */
     public function flush()
     {
@@ -159,10 +174,12 @@ abstract class BaseGateway
     }
 
     /**
-     *
      * @access public
-     * @param  Object                                                $entity
-     * @return \CCDNUser\SecurityBundle\Gateway\BaseGatewayInterface
+     *
+     * @param Object $entity
+     *
+     * @throws ORMException
+     * @return $this
      */
     public function refresh($entity)
     {

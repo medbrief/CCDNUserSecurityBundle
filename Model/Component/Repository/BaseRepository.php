@@ -13,6 +13,7 @@
 
 namespace CCDNUser\SecurityBundle\Model\Component\Repository;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
 use CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface;
 use CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface;
@@ -33,23 +34,21 @@ use CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface;
 abstract class BaseRepository
 {
     /**
-     *
      * @access protected
-     * @var \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface $gateway
+     * @var GatewayInterface $gateway
      */
     protected $gateway;
 
     /**
-     *
      * @access protected
-     * @var \CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface $model
+     * @var ModelInterface $model
      */
     protected $model;
 
     /**
-     *
      * @access public
-     * @param \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface $gateway
+     *
+     * @param GatewayInterface $gateway
      */
     public function __construct(GatewayInterface $gateway)
     {
@@ -57,10 +56,11 @@ abstract class BaseRepository
     }
 
     /**
-     *
      * @access public
-     * @param  \CCDNUser\SecurityBundle\Model\FrontModel\ModelInterface                $model
-     * @return \CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface
+     *
+     * @param  ModelInterface $model
+     *
+     * @return $this
      */
     public function setModel(ModelInterface $model)
     {
@@ -70,9 +70,8 @@ abstract class BaseRepository
     }
 
     /**
-     *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Model\Component\Gateway\GatewayInterface
+     * @return GatewayInterface
      */
     public function getGateway()
     {
@@ -80,9 +79,8 @@ abstract class BaseRepository
     }
 
     /**
-     *
      * @access public
-     * @return \Doctrine\ORM\QueryBuilder
+     * @return QueryBuilder
      */
     public function getQueryBuilder()
     {
@@ -93,8 +91,8 @@ abstract class BaseRepository
      *
      * @access public
      * @param  string                                       $column  = null
-     * @param  Array                                        $aliases = null
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @param  array                                        $aliases = null
+     * @return ArrayCollection
      */
     public function createCountQuery($column = null, Array $aliases = null)
     {
@@ -104,8 +102,8 @@ abstract class BaseRepository
     /**
      *
      * @access public
-     * @param  Array                                        $aliases = null
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @param  array                                        $aliases = null
+     * @return QueryBuilder
      */
     public function createSelectQuery(Array $aliases = null)
     {
@@ -113,10 +111,11 @@ abstract class BaseRepository
     }
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder                   $qb
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @param  QueryBuilder $qb
+     *
+     * @return ArrayCollection
      */
     public function one(QueryBuilder $qb)
     {
@@ -124,10 +123,11 @@ abstract class BaseRepository
     }
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder $qb
-     * @return \Doctrine\ORM\QueryBuilder
+     *
+     * @param QueryBuilder $qb
+     *
+     * @return ArrayCollection
      */
     public function all(QueryBuilder $qb)
     {

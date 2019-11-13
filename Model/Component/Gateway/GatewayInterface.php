@@ -13,6 +13,7 @@
 
 namespace CCDNUser\SecurityBundle\Model\Component\Gateway;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\QueryBuilder;
 
@@ -32,8 +33,8 @@ interface GatewayInterface
     /**
      *
      * @access public
-     * @param \Doctrine\Common\Persistence\ObjectManager $em
-     * @param string                                     $entityClass
+     * @param ObjectManager $em
+     * @param string        $entityClass
      */
     public function __construct(ObjectManager $em, $entityClass);
 
@@ -45,58 +46,59 @@ interface GatewayInterface
     public function getEntityClass();
 
     /**
-     *
      * @access public
-     * @return \Doctrine\ORM\QueryBuilder
+     * @return QueryBuilder
      */
     public function getQueryBuilder();
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder                   $qb
-     * @param  Array                                        $parameters
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @param  QueryBuilder $qb
+     * @param  array        $parameters
+     *
+     * @return ArrayCollection
      */
     public function one(QueryBuilder $qb, $parameters = array());
 
     /**
-     *
      * @access public
-     * @param  \Doctrine\ORM\QueryBuilder                   $qb
-     * @param  Array                                        $parameters
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @param QueryBuilder $qb
+     * @param array        $parameters
+     *
+     * @return ArrayCollection
      */
     public function all(QueryBuilder $qb, $parameters = array());
 
     /**
      *
      * @access public
-     * @param  Object                                                $entity
-     * @return \CCDNUser\SecurityBundle\Gateway\BaseGatewayInterface
+     * @param  Object $entity
+     * @return $this
      */
     public function persist($entity);
 
     /**
      *
      * @access public
-     * @param  Object                                                $entity
-     * @return \CCDNUser\SecurityBundle\Gateway\BaseGatewayInterface
+     * @param  Object $entity
+     * @return $this
      */
     public function remove($entity);
 
     /**
      *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Gateway\BaseGatewayInterface
+     * @return $this
      */
     public function flush();
 
     /**
      *
      * @access public
-     * @param  Object                                                $entity
-     * @return \CCDNUser\SecurityBundle\Gateway\BaseGatewayInterface
+     * @param  Object $entity
+     * @return $this
      */
     public function refresh($entity);
 }

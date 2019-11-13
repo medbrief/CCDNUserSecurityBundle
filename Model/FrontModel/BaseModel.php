@@ -32,32 +32,29 @@ use CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface;
 abstract class BaseModel
 {
     /**
-     *
      * @access protected
-     * @var \CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface
+     * @var RepositoryInterface
      */
     protected $repository;
 
     /**
-     *
      * @access protected
-     * @var \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface
+     * @var ManagerInterface
      */
     protected $manager;
 
     /**
-     *
      * @access protected
-     * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher
+     * @var EventDispatcherInterface $dispatcher
      */
     protected $dispatcher;
 
     /**
-     *
      * @access public
-     * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface             $dispatcher
-     * @param \CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface $repository
-     * @param \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface       $manager
+     *
+     * @param EventDispatcherInterface $dispatcher
+     * @param RepositoryInterface      $repository
+     * @param ManagerInterface         $manager
      */
     public function __construct(EventDispatcherInterface $dispatcher, RepositoryInterface $repository, ManagerInterface $manager)
     {
@@ -71,9 +68,8 @@ abstract class BaseModel
     }
 
     /**
-     *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Model\Component\Repository\RepositoryInterface
+     * @return RepositoryInterface
      */
     public function getRepository()
     {
@@ -81,9 +77,8 @@ abstract class BaseModel
     }
 
     /**
-     *
      * @access public
-     * @return \CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface
+     * @return ManagerInterface
      */
     public function getManager()
     {

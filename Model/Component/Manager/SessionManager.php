@@ -17,6 +17,8 @@ use CCDNUser\SecurityBundle\Model\Component\Manager\ManagerInterface;
 use CCDNUser\SecurityBundle\Model\Component\Manager\BaseManager;
 
 use CCDNUser\SecurityBundle\Entity\Session;
+use DateTime;
+use Exception;
 
 /**
  *
@@ -32,11 +34,13 @@ use CCDNUser\SecurityBundle\Entity\Session;
 class SessionManager extends BaseManager implements ManagerInterface
 {
     /**
-     *
      * @access public
-     * @param  string                                                          $ipAddress
-     * @param  string                                                          $username
-     * @return \CCDNUser\SecurityBundle\Model\Component\Manager\SessionManager
+     *
+     * @param string $ipAddress
+     * @param string $username
+     *
+     * @throws Exception
+     * @return SessionManager
      */
     public function newRecord($ipAddress, $username)
     {
@@ -44,7 +48,7 @@ class SessionManager extends BaseManager implements ManagerInterface
 
         $session->setIpAddress($ipAddress);
         $session->setLoginAttemptUsername($username);
-        $session->setLoginAttemptDate(new \DateTime('now'));
+        $session->setLoginAttemptDate(new DateTime('now'));
 
         $this
             ->persist($session)
