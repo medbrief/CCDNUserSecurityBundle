@@ -10,4 +10,4 @@ services:
     ccdn_user_security.repository.session:
         class: %ccdn_user_security.repository.session.class%
         arguments:
-            - @ccdn_user_security.gateway.session
+            - '@ccdn_user_security.gateway.session'
