@@ -8,7 +8,7 @@ services:
     # Managers.
     #
     ccdn_user_security.manager.session:
-        class: %ccdn_user_security.manager.session.class%
+        class: '%ccdn_user_security.manager.session.class%'
         arguments:
             - '@event_dispatcher'
             - '@ccdn_user_security.gateway.session'

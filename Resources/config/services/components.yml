@@ -8,13 +8,13 @@ services:
     # Login/Logout Success/Failure Handlers.
     #
     ccdn_user_security.component.authentication.handler.login_failure_handler:
-        class: %ccdn_user_security.component.authentication.handler.login_failure_handler.class%
-        parent: security.authentication.failure_handler
+        class: '%ccdn_user_security.component.authentication.handler.login_failure_handler.class%'
+        parent: 'security.authentication.failure_handler'
         calls:
             - [setLoginFailureTracker, ['@ccdn_user_security.component.authentication.tracker.login_failure_tracker']]
 
     ccdn_user_security.component.authentication.tracker.login_failure_tracker:
-        class: %ccdn_user_security.component.authentication.tracker.login_failure_tracker.class%
+        class: '%ccdn_user_security.component.authentication.tracker.login_failure_tracker.class%'
         arguments:
             - '@ccdn_user_security.model.session'
 
@@ -22,46 +22,46 @@ services:
     # Access Decision Manager
     #
     ccdn_user_security.component.authorisation.security_manager:
-        class: %ccdn_user_security.component.authorisation.security_manager.class%
+        class: '%ccdn_user_security.component.authorisation.security_manager.class%'
         arguments:
             - '@request_stack'
             - '@ccdn_user_security.component.authentication.tracker.login_failure_tracker'
-            - %ccdn_user_security.login_shield.route_login%
-            - %ccdn_user_security.login_shield.force_account_recovery%
-            - %ccdn_user_security.login_shield.block_pages%
+            - '%ccdn_user_security.login_shield.route_login%'
+            - '%ccdn_user_security.login_shield.force_account_recovery%'
+            - '%ccdn_user_security.login_shield.block_pages%'
 
     #
     # Authorisation Voter
     #
     ccdn_user_security.component.authorisation.voter.client_login_voter:
-        class: %ccdn_user_security.component.authorisation.voter.client_login_voter.class%
+        class: '%ccdn_user_security.component.authorisation.voter.client_login_voter.class%'
         arguments:
             - '@ccdn_user_security.component.authorisation.security_manager'
         tags:
-            - { name: security.voter }
+            - { name: 'security.voter' }
 
     #
     # Blocking login Listener.
     #
     ccdn_user_security.component.listener.blocking_login_listener:
-        class: %ccdn_user_security.component.listener.blocking_login_listener.class%
+        class: '%ccdn_user_security.component.listener.blocking_login_listener.class%'
         arguments:
             - '@ccdn_user_security.component.authorisation.security_manager'
             - '@ccdn_user_security.component.access_denied_exception_factory'
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 9 }
     ccdn_user_security.component.access_denied_exception_factory:
-        class: %ccdn_user_security.component.access_denied_exception_factory.class%
+        class: '%ccdn_user_security.component.access_denied_exception_factory.class%'
 
     #
     # Defer login Listener.
     #
     ccdn_user_security.component.listener.defer_login_listener:
-        class: %ccdn_user_security.component.listener.defer_login_listener.class%
+        class: '%ccdn_user_security.component.listener.defer_login_listener.class%'
         arguments:
             - '@router'
             - '@ccdn_user_security.component.authorisation.security_manager'
-            - %ccdn_user_security.login_shield.force_account_recovery%
+            - '%ccdn_user_security.login_shield.force_account_recovery%'
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
 

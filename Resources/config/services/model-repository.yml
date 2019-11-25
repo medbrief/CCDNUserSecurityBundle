@@ -8,6 +8,6 @@ services:
     # Repositories.
     #
     ccdn_user_security.repository.session:
-        class: %ccdn_user_security.repository.session.class%
+        class: '%ccdn_user_security.repository.session.class%'
         arguments:
             - '@ccdn_user_security.gateway.session'
