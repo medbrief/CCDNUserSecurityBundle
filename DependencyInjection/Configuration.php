@@ -69,15 +69,12 @@ class Configuration implements ConfigurationInterface
     {
         $node
             ->isRequired()
-            ->cannotBeEmpty()
             ->children()
                 ->arrayNode('entity')
                     ->isRequired()
-                    ->cannotBeEmpty()
                     ->children()
                         ->arrayNode('user')
                             ->isRequired()
-                            ->cannotBeEmpty()
                             ->children()
                                 ->scalarNode('class')
                                     ->isRequired()
